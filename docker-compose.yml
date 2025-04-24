@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    ports:
+      - "8081:80"
+
+  test:
+    build: .
+    depends_on:
+      - nginx
